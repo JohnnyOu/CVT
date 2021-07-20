@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+
+\title{Centroidal Voronoi Tessellation}
+\author{Johnny Ou}
+\date{June 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+% TODO -- perhaps say what fields there are
+% TODO -- summarize its different methods of calculations and how things are at the moment
+Centroidal Voronoi Tessellation (CVT) is a way to partition a connected surface that is applicable in many subjects such as data compression and finding optimal quantization.
+
+The definition of a \textit{Voronoi tessellation} is given as follows. Given a connected space $C$ and a set of distinct points $G \subseteq C$ called \textit{generators}, we can construct a \textit{Voronoi diagram} partitioned by \textit{cells} each containing a generator. Furthermore, every point in $C$ is in a cell such that the point is closer to its cell's generator than any other generators. In other words, each cell in a \textit{Voronoi diagram} can be expressed as
+$$\{ x \in C : |x - p| < |x - p'| \; \forall p' \in G \}.$$
+
+% TODO -- perhaps give an example of a Voronoi diagram in R2
+
+Now consider a density function defined over the connected space $C$. One can visualize the space as an object with mass that is either uniform or otherwise. Then, each cell mentioned above has a \textit{centroid}, also known as center of mass. A \textit{centroidal Voronoi tessellation} is a \textit{Voronoi diagram} such that the generator of each cell coincides with its centroid.
+
+% TODO -- more stuff to be said?
+Given a connected domain (finite or otherwise), a Voronoi diagram depends on the generators. The Voronoi diagrams of the same domain can look drastically different based on the generators that are selected. However, there are only a few centroidal Voronoi tessellations for a given domain due to the added constraint that each generator must also be the centroid of each cell. Our goal is to find one of such tessellations that is \textit{stable} [...].
+
+\section{Problem Rephrased}
+
+% TODO -- derive the energy function
+% TODO -- briefly explain why it works
+% TODO -- state Lloyd's method
+
+We can change the problem of finding a CVT to one involving finding critical points of a certain energy function. [...]
+
+Let our domain be $\Omega$. Our goal is to find $n$ cells, each denoted $\Omega_i$, for the CVT of $\Omega$. Then, define a density function $\rho : \Omega \to \mathbb{R}$. Consider the usual definition for the the centroid of $\Omega_i$:
+$$c_i = \frac
+    {\int_{\Omega_i} x \rho(x) \; dA}
+    {\int_{\Omega_i} \rho(x) \; dA},$$
+where $dA$ is the area differential. Then, by definition, these $\{c_i\}$ should also be the generators of the CVT for $\Omega$. [...]
+
+Define $F_i : ? \to \mathbb{R}$ as
+$$F_i(X) = \int_{\Omega_i} \rho(x) \|x - x_i\|^2 \; dA.$$
+
+\end{document}
